@@ -1,12 +1,13 @@
-import { Button } from "@mui/material";
 import "./styles/App.css";
+import { AppRouter } from "./routes";
+import { Providers } from "./providers";
 
 function App() {
   return (
-    <>
-      <h1>App page</h1>
-      <Button variant="contained">My Button</Button>
-    </>
+    <Providers>
+      {/* TODO: Заменить на Atomic router */}
+      <AppRouter />
+    </Providers>
   );
 }
 
