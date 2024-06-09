@@ -1,11 +1,15 @@
-export const useFormValidator = () => {
-  const emailValidate = (value: string): string | null => {
-    return /^\S+@\S+$/.test(value) ? null : "Введите корректный email";
+export const formValidator = () => {
+  const isEmailValid = (value: string): boolean => {
+    return /^\S+@\S+$/.test(value) && value.length > 5;
   };
 
-  const passwordValidate = (value: string): string | null => {
-    return value.length >= 6 ? null : "Минимальная длина пароля 6 символов";
+  const isPasswordValid = (value: string): boolean => {
+    return value.length >= 6;
   };
 
-  return { emailValidate, passwordValidate };
+  const isEmpty = (value: string): boolean => {
+    return value.trim().length === 0;
+  };
+
+  return { isEmailValid, isPasswordValid, isEmpty };
 };
