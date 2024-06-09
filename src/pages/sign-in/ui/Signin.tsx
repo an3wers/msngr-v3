@@ -1,7 +1,5 @@
 import { Anchor, Box, Group, Title } from "@mantine/core";
 import styles from "./signin.module.css";
-import { Link } from "react-router-dom";
-// import { Routes } from "../../../shared/config/routes";
 import { LoginForm } from "../../../features/login";
 
 export const Signin = () => {

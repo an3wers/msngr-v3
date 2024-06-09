@@ -3,9 +3,6 @@ import { formValidator } from "../../../shared/libs/formValidator";
 import { reset, every, and, or, not } from "patronum";
 import * as api from "../api/loginApi";
 import { getUserFx } from "../../../entities/user";
-import { routes } from "../../../shared/config/routes";
-
-const currentRoute = routes.auth.signin;
 
 // TODO: Обработать кейс размонтирования компонента - сбрасывать стор на дефолтное состояние
 

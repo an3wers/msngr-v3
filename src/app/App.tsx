@@ -1,5 +1,4 @@
 import "./styles/App.css";
-import { AppRouter } from "./routes";
 import { Providers } from "./providers";
 import { useEffect } from "react";
 import * as model from "../entities/user/index";
