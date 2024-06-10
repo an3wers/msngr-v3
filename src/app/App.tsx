@@ -2,7 +2,7 @@ import "./styles/App.css";
 import { Providers } from "./providers";
 import { useEffect } from "react";
 import * as model from "../entities/user/index";
-import { Home } from "../pages/home";
+import { RoutesView } from "../pages";
 
 function App() {
   useEffect(() => {
@@ -13,7 +13,7 @@ function App() {
     <Providers>
       {/* TODO: Заменить на Atomic router */}
       {/* <AppRouter /> */}
-      <Home />
+      <RoutesView />
     </Providers>
   );
 }
