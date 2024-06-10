@@ -1,4 +1,6 @@
 import { MantineProvider, MantineTheme } from "@mantine/core";
+import { RouterProvider } from "atomic-router-react";
+import { router } from "../../shared/config/routes";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   const theme: Partial<MantineTheme> = {
@@ -9,7 +11,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
   };
   return (
     <MantineProvider theme={theme} defaultColorScheme="dark">
-      {children}
+      <RouterProvider router={router}>{children}</RouterProvider>
     </MantineProvider>
   );
 };

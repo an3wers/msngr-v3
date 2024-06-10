@@ -1,6 +1,8 @@
-import { Anchor, Box, Group, Title } from "@mantine/core";
+import { Anchor, Box, Group, Space, Title } from "@mantine/core";
 import styles from "./signin.module.css";
 import { LoginForm } from "../../../features/login";
+import { Link } from "atomic-router-react";
+import { routes } from "../../../shared/config/routes";
 
 export const Signin = () => {
   return (
@@ -10,10 +12,11 @@ export const Signin = () => {
           Войти
         </Title>
         <LoginForm />
+        <Space h="md" />
         <Group justify="center">
-          {/* <Anchor to={Routes.SIGN_UP} component={Link}>
+          <Anchor to={routes.auth.signup} component={Link}>
             Нет аккаунта?
-          </Anchor> */}
+          </Anchor>
         </Group>
       </Box>
     </main>
