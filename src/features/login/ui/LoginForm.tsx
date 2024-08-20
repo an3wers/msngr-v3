@@ -24,7 +24,7 @@ export const LoginForm = () => {
 
       <form onSubmit={handleSubmit}>
         <Stack>
-          <Email />
+          <Login />
           <Password />
         </Stack>
         <Button mt={"xl"} loading={pending} fullWidth type="submit">
@@ -35,21 +35,20 @@ export const LoginForm = () => {
   );
 };
 
-const emailErrorText = {
-  empty: "Email не может быть пустым",
-  invalid: "Неверный формат email",
+const loginErrorText = {
+  empty: "Логин не может быть пустым",
+  invalid: "Неверный формат логина",
 };
 
-const Email = () => {
-  const [email, error] = useUnit([model.$email, model.$emailError]);
+const Login = () => {
+  const [login, error] = useUnit([model.$login, model.$loginError]);
 
   return (
     <TextInput
-      label="Email"
-      value={email}
-      error={error ? emailErrorText[error] : null}
-      onChange={(e) => model.emailChanged(e.currentTarget.value)}
-      placeholder="your@email.com"
+      label="Логин"
+      value={login}
+      error={error ? loginErrorText[error] : null}
+      onChange={(e) => model.loginChanged(e.currentTarget.value)}
     />
   );
 };
@@ -68,7 +67,6 @@ const Password = () => {
       value={password}
       error={error ? passwordErrorText[error] : null}
       onChange={(e) => model.passwordChanged(e.currentTarget.value)}
-      placeholder="Введите пароль"
     />
   );
 };

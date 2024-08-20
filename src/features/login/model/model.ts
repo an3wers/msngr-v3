@@ -1,6 +1,6 @@
 import { createStore, createEvent, sample, attach } from "effector";
 import { formValidator } from "../../../shared/libs/formValidator";
-import { reset, every, and, or, not } from "patronum";
+import { reset, every, and, not } from "patronum";
 import * as api from "../api/loginApi";
 import { getUserFx } from "../../../entities/user";
 
@@ -10,12 +10,12 @@ import { getUserFx } from "../../../entities/user";
 // Создаем с помощью attach локальную копию эффекта
 const signInFx = attach({ effect: api.signInFx });
 
-export const emailChanged = createEvent<string>();
+export const loginChanged = createEvent<string>();
 export const passwordChanged = createEvent<string>();
 export const formSubmitted = createEvent<React.SyntheticEvent>();
 
-export const $email = createStore<string>("");
-export const $emailError = createStore<"invalid" | "empty" | null>(null);
+export const $login = createStore<string>("");
+export const $loginError = createStore<"invalid" | "empty" | null>(null);
 
 export const $password = createStore<string>("");
 export const $passwordError = createStore<"invalid" | "empty" | null>(null);
@@ -24,38 +24,41 @@ export const $signInError = createStore<Error | null>(null);
 
 export const $signInPending = signInFx.pending;
 
-$email.on(emailChanged, (_, val) => val);
+$login.on(loginChanged, (_, val) => val);
 $password.on(passwordChanged, (_, val) => val);
 
-reset({ clock: emailChanged, target: $emailError });
+reset({ clock: loginChanged, target: $loginError });
 reset({ clock: passwordChanged, target: $passwordError });
 
 const $isFormValid = every({
-  stores: [$emailError, $passwordError],
+  stores: [$loginError, $passwordError],
   predicate: null,
 });
 
 /*
 smaple
 clock – срабатывание чего
+source
+fn
+filter
 target – вызывает что
 */
 
 // form validate
 
-const { isEmailValid, isPasswordValid, isEmpty } = formValidator();
+const { isLoginValid, isPasswordValid, isEmpty } = formValidator();
 
 $signInError.on(formSubmitted, () => null);
 
 sample({
   clock: formSubmitted,
-  source: $email,
-  fn: (email) => {
-    if (isEmpty(email)) return "empty";
-    if (!isEmailValid(email)) return "invalid";
+  source: $login,
+  fn: (login) => {
+    if (isEmpty(login)) return "empty";
+    if (!isLoginValid(login)) return "invalid";
     return null;
   },
-  target: $emailError,
+  target: $loginError,
 });
 
 sample({
@@ -71,7 +74,7 @@ sample({
 
 sample({
   clock: formSubmitted,
-  source: { login: $email, password: $password },
+  source: { login: $login, password: $password },
   filter: and($isFormValid, not($signInPending)),
   target: signInFx,
 });

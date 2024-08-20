@@ -7,9 +7,13 @@ export const formValidator = () => {
     return value.length >= 6;
   };
 
+  const isLoginValid = (value: string): boolean => {
+    return value.length >= 3;
+  };
+
   const isEmpty = (value: string): boolean => {
     return value.trim().length === 0;
   };
 
-  return { isEmailValid, isPasswordValid, isEmpty };
+  return { isEmailValid, isPasswordValid, isEmpty, isLoginValid };
 };

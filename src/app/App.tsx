@@ -11,8 +11,6 @@ function App() {
 
   return (
     <Providers>
-      {/* TODO: Заменить на Atomic router */}
-      {/* <AppRouter /> */}
       <RoutesView />
     </Providers>
   );

@@ -12,6 +12,8 @@ export const $userError = createStore<string | null>(null);
 // clear error
 $userError.reset(getUserFx.pending);
 
+$user.watch((u) => console.log(">> User state >>", u));
+
 sample({
   clock: getUser,
   target: getUserFx,

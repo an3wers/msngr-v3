@@ -9,6 +9,7 @@ import "./app/styles/index.css";
 import "@mantine/core/styles.css";
 import { appStarted } from "./shared/config/init.ts";
 
+// Стартуем приложение и запускаем роутер
 appStarted();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

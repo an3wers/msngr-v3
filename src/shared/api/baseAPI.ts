@@ -110,42 +110,9 @@ export class BaseAPI {
   }
 }
 
-export default new BaseAPI({ baseUrl: globalConfig.baseURL });
-
-/*
-Request example:
-
-export interface GetUserParams {
-  id: string;
-}
-export type GetUserConfig = FetchRequestConfig<GetUserParams>;
-
-export const getUsersId = async ({ params, config }: GetUserConfig) =>
-  api.get<UserResponse>(`/users/${params.id}`, config);
-
-
-
-
-class UserService {
-  getUsers(requestConfig?: FetchRequestConfig) {
-    return api.get<UsersResponse>('/users', requestConfig?.config);
-  }
-
-  postUser({ params, config }: FetchRequestConfig<Omit<User, 'id'>>) {
-    return api.post('/users', params, config);
-  }
-
-  getUserById({
-    params,
-    config
-  }: FetchRequestConfig<{
-    id: string;
-  }>) {
-    return api.get<UserResponse>(`/users/${params.id}`, config);
-  }
-}
-
-export default UserService;
-
-
-*/
+export default new BaseAPI({
+  baseUrl: globalConfig.baseURL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});

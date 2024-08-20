@@ -10,15 +10,14 @@ interface SignInRequest {
 export const signInFx = createEffect<SignInRequest, unknown, Error>(
   async (data) => {
     try {
-      const res = await api.post("auth/signin", data);
+      const res = await api.post("auth/signin", data, {});
 
       checkError(res);
 
       return res.data;
     } catch (error) {
-      throw new Error(
-        error instanceof Error ? error.message : JSON.stringify(error)
-      );
+      console.error(error);
+      throw error;
     }
   }
 );
