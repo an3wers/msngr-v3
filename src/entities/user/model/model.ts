@@ -1,6 +1,8 @@
 import { createStore, attach, sample, createEvent } from "effector";
 import { User } from "./types";
 import * as api from "../api/userApi";
+import { appStarted } from "../../../shared/config/init";
+// import {} from
 
 export const getUserFx = attach({ effect: api.getUserFx });
 
@@ -13,6 +15,11 @@ export const $userError = createStore<string | null>(null);
 $userError.reset(getUserFx.pending);
 
 $user.watch((u) => console.log(">> User state >>", u));
+
+sample({
+  clock: appStarted,
+  target: getUser,
+});
 
 sample({
   clock: getUser,

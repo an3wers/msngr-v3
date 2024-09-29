@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+
 import {
   createHistoryRouter,
   createRoute,
@@ -10,7 +11,6 @@ import { sample } from "effector";
 import { createBrowserHistory } from "history";
 import { appStarted } from "./init";
 
-// TODO: Add Profile
 export const routes = {
   home: createRoute(),
   about: createRoute(),
