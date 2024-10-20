@@ -1,13 +1,6 @@
-export interface User {
-  id: number;
-  first_name: string;
-  second_name: string;
-  display_name: string;
-  login: string;
-  email: string;
-  phone: string;
-  avatar: string;
-}
+import { UserResponse } from "../../../shared/api/user/types";
+
+export interface User extends UserResponse {}
 
 export interface UserError {
   reason: string;

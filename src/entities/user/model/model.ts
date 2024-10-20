@@ -1,8 +1,7 @@
 import { createStore, attach, sample, createEvent } from "effector";
 import { User } from "./types";
-import * as api from "../api/userApi";
 import { appStarted } from "../../../shared/config/init";
-// import {} from
+import * as api from "../../../shared/api/user/userApi";
 
 export const getUserFx = attach({ effect: api.getUserFx });
 

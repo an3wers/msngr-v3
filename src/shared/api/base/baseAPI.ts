@@ -1,4 +1,4 @@
-import { globalConfig } from "../config/global";
+import { globalConfig } from "../../config/global";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class BaseAPI {
@@ -54,7 +54,6 @@ export class BaseAPI {
       headers: {
         ...(!!options?.headers && options.headers),
         ...this.headers,
-        // ...(!!this.token && { Authorization: `Bearer ${this.token}` }),
       },
     };
 

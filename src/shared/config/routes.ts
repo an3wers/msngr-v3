@@ -45,14 +45,14 @@ const routesMap: UnmappedRouteObject<
     path: "/about",
     route: routes.about,
   },
-  {
-    path: "/posts",
-    route: routes.private.posts,
-  },
-  {
-    path: "/posts/:postId",
-    route: routes.private.post,
-  },
+  // {
+  //   path: "/posts",
+  //   route: routes.private.posts,
+  // },
+  // {
+  //   path: "/posts/:postId",
+  //   route: routes.private.post,
+  // },
   {
     path: "/messanger",
     route: routes.private.messanger,

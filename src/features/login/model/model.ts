@@ -1,7 +1,9 @@
 import { createStore, createEvent, sample, attach } from "effector";
 import { formValidator } from "../../../shared/libs/formValidator";
 import { reset, every, and, not } from "patronum";
-import * as api from "../api/loginApi";
+import * as api from "../../../shared/api/user/userApi";
+
+// TODO: Точно ли нужно этот эффект использовать
 import { getUserFx } from "../../../entities/user";
 
 // TODO: Обработать кейс размонтирования компонента - сбрасывать стор на дефолтное состояние
@@ -85,5 +87,5 @@ $signInError.on(signInFx.failData, (_, error) => error);
 sample({
   clock: signInFx.done,
   filter: () => $signInError === null,
-  target: getUserFx,
+  target: getUserFx, // ??
 });

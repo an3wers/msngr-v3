@@ -2,7 +2,9 @@
 export const checkError = (response: any, message = "") => {
   if (!response.success) {
     const msg =
-      "reason" in response.data ? response.data.reason : message || "Error";
+      "reason" in response.data
+        ? response.data.reason
+        : message || response.statusText || "Error";
     throw new Error(`${response.status} - ${msg}`);
   }
 };
